@@ -3,7 +3,6 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import AuthService from "../services/auth.service";
-import { error } from "console";
 
 type Props = {};
 
@@ -42,7 +41,7 @@ export default class Register extends Component<Props, State> {
                 )
                 .required("This field is required!"),
             email: Yup.string()
-                .email("This is not a valid email."),
+                .email("This is not a valid email.")
                 .required("This field is required!"),
             password: Yup.string()
                 .test(
