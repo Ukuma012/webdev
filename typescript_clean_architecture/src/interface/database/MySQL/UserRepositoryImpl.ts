@@ -41,7 +41,7 @@ class UserRepository extends IUserRepository {
 
     public async create(createDTO: TCreateUserDTO): Promise<User> {
         const user = await this.connection.execute(
-            'INSERT INTO Users (name, age) VALUES ("${createUserDTO.name}", "${createUserDTO.age}")'
+            'INSERT INTO Users (name, age) VALUES ("${createDTO.name}", "${createDTO.age}")'
         );
         return user;
     }
