@@ -5,7 +5,7 @@ import { toCreateUserDTO } from "../../../interface/database/repository/user/DTO
 class CreateUserUseCase {
     private userRepository: IUserRepository;
 
-    //usecaseクラスのコンストラクターにrepositoryが渡され、それをusecaseがつかう
+    // usecaseクラスのコンストラクターにrepositoryが渡され、それをusecaseがつかう
     // Dependency Injection
     public constructor(userRepository: IUserRepository) {
         this.userRepository = userRepository;
