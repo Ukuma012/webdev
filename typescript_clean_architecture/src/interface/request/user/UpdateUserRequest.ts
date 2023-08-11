@@ -1,4 +1,4 @@
-import { TypedRequestBody } from "../ExpressRequest";
+import { TypedRequest } from "../ExpressRequest";
 import { StatusCode } from "../../../constant/ErrorCode";
 
 interface Params {
@@ -6,7 +6,7 @@ interface Params {
     age: number;
 }
 
-export type TUpdateUserRequest = TypedRequestBody<Params>;
+export type TUpdateUserRequest = TypedRequest<Params>;
 
 export class UpdateUserRequest {
     private _name: string;
