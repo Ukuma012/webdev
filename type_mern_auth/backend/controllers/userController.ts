@@ -7,9 +7,21 @@ import generateToken from "../utils/generateToken";
 // route    POST /api/users/auth
 // @access  Public
 const authUser = asyncHandler(async (req: Request, res: Response) => {
-  res.status(200).json({
-    message: "Ok",
-  });
+  const {email, password}: {email: string, password: string} = req.body;
+
+  const user = await UserModel.findOne({email});
+
+  if (user && (await user.matchPassword(password))) {
+    generateToken(res, user._id);
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email
+    });
+  } else {
+    res.status(401);
+    throw new Error('Invalid email or password');
+  }
 });
 
 // @desc    Register a new user
