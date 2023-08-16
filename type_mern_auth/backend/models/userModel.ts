@@ -7,6 +7,7 @@ interface IUser extends Document {
     password: string;
     createdAt: Date;
     updatedAt: Date;
+    userId: string;
     matchPassword: (enteredPassword: string) => Promise <boolean>;
 }
 

@@ -7,11 +7,11 @@ import {
   registerUser,
   updateuserProfile,
 } from "../controllers/userController";
+import { protect } from "../middleware/authMiddleware";
 
 router.post("/", registerUser);
 router.post("/auth", authUser);
 router.post("/logout", logoutUser);
-router.get("/profile", getUserProfile);
-router.post("/profile", updateuserProfile);
+router.route('/profile').get(protect, getUserProfile).put(protect, updateuserProfile);
 
 export default router;
