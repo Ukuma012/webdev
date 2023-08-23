@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node backend/dist/server.js",
-    "server-dev": "concurrently \"npx tsc --watch\" \"nodemon -q backend/dist/server.js\""
+    "server": "node backend/dist/server.js",
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
