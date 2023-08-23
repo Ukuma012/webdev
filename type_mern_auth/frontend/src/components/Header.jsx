@@ -29,7 +29,7 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>MERN Auth</Navbar.Brand>
+            <Navbar.Brand>Keyaki</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -38,21 +38,21 @@ const Header = () => {
                 <>
                   <NavDropdown title={userInfo.name} id="username">
                     <LinkContainer to="/profile">
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                      <NavDropdown.Item>プロフィール</NavDropdown.Item>
                     </LinkContainer>
-                    <NavDropdown.Item onClick={ logoutHandler }>Logout</NavDropdown.Item>
+                    <NavDropdown.Item onClick={ logoutHandler }>ログアウト</NavDropdown.Item>
                   </NavDropdown>
                 </>
               ) : (
                 <>
                   <LinkContainer to="/login">
                     <Nav.Link>
-                      <FaSignInAlt /> Sign In
+                      <FaSignInAlt /> サインイン
                     </Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/register">
                     <Nav.Link href="/register">
-                      <FaSignOutAlt /> Sign Up
+                      <FaSignOutAlt /> 今すぐ始める
                     </Nav.Link>
                   </LinkContainer>
                 </>
