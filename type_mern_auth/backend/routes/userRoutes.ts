@@ -1,5 +1,8 @@
 import express from "express";
-import { body } from "express-validator";
+import {
+  validationValidation,
+  registerValidation,
+} from "../middleware/validationMiddleware";
 
 const router = express.Router();
 import {
@@ -12,18 +15,9 @@ import {
 } from "../controllers/userController";
 import { protect } from "../middleware/authMiddleware";
 
-router.post(
-  "/validation",
-  [
-    body("email").isEmail().normalizeEmail(),
-    body("password").isLength({ min: 4 }),
-  ],
-  testValidation
-);
+router.post("/validation", validationValidation(), testValidation);
 
-router.post("/", [
-  body("name").isLength({ min: 4 }),
-], registerUser);
+router.post("/", registerValidation(), registerUser);
 router.post("/auth", authUser);
 router.post("/logout", logoutUser);
 router
