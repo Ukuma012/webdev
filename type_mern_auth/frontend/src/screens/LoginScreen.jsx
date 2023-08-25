@@ -38,24 +38,22 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>アカウントにサインイン</h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="email">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>メールアドレス</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className="my-2" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>パスワード</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
@@ -64,11 +62,11 @@ const LoginScreen = () => {
         { isLoading && <Loader />}
 
         <Button type="submit" varient="primary" className="mt-3">
-          Sign In
+          サインイン
         </Button>
         <Row className="py-3">
           <Col>
-            New Customer? <Link to="/register">Register</Link>
+            アカウントをお持ちでない方はこちら <Link to="/register">ユーザー登録</Link>
           </Col>
         </Row>
       </Form>
