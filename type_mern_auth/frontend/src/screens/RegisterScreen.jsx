@@ -44,44 +44,40 @@ const RegisterScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <h1>アカウントの作成</h1>
 
       <Form onSubmit={submitHandler}>
-        <Form.Group className="my-2" controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-
         <Form.Group className="my-2" controlId="email">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>メール</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
+        <Form.Group className="my-2" controlId="name">
+          <Form.Label>氏名</Form.Label>
+          <Form.Control
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
         <Form.Group className="my-2" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>パスワード</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className="my-2" controlId="confirmPassword">
-          <Form.Label>confirm Password</Form.Label>
+          <Form.Label>パスワードの確認</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Confirm password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
@@ -90,11 +86,11 @@ const RegisterScreen = () => {
         {isLoading && <Loader />}
 
         <Button type="submit" varient="primary" className="mt-3">
-          Sign Up
+          アカウントの作成
         </Button>
         <Row className="py-3">
           <Col>
-            Already have an account? <Link to="/login">Login</Link>
+            アカウントをお持ちですか？ <Link to="/login">サインイン</Link>
           </Col>
         </Row>
       </Form>
