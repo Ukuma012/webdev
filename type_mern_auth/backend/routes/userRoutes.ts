@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  validationValidation,
   registerValidation,
 } from "../middleware/validationMiddleware";
 
@@ -11,11 +10,8 @@ import {
   logoutUser,
   registerUser,
   updateuserProfile,
-  testValidation,
 } from "../controllers/userController";
 import { protect } from "../middleware/authMiddleware";
-
-router.post("/validation", validationValidation(), testValidation);
 
 router.post("/", registerValidation(), registerUser);
 router.post("/auth", authUser);

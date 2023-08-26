@@ -5,20 +5,6 @@ import generateToken from "../utils/generateToken";
 import { CustomRequest } from "../types/customTypes";
 import { validationResult } from "express-validator/src/validation-result";
 
-// @desc    Test Validator
-// route    POST /api/users/validate
-// @access  Public
-const testValidation = asyncHandler(async (req: Request, res: Response) => {
-  const errors = validationResult(req);
-
-  if(!errors.isEmpty()) {
-    res.status(400).json({ error: errors.array() });
-  }
-
-  res.status(200).json({ message: "Good!" });
-
-});
-
 // @desc    Auth user/set token
 // route    POST /api/users/auth
 // @access  Public
@@ -143,5 +129,4 @@ export {
   logoutUser,
   getUserProfile,
   updateuserProfile,
-  testValidation,
 };
