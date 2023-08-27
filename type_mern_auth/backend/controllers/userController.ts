@@ -4,6 +4,7 @@ import UserModel from "../models/userModel";
 import generateToken from "../utils/generateToken";
 import { CustomRequest } from "../types/customTypes";
 import { validationResult } from "express-validator/src/validation-result";
+import sendMail from "../utils/sendMail";
 
 // @desc    Auth user/set token
 // route    POST /api/users/auth
@@ -56,6 +57,7 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 
   if (user) {
     generateToken(res, user._id);
+    sendMail(res);
     res.status(201).json({
       _id: user._id,
       name: user.name,
