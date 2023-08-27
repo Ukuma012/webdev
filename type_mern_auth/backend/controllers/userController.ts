@@ -58,11 +58,12 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 
   if (user) {
     generateToken(res, user._id);
-    sendmailRegisterUser(res);
+    sendmailRegisterUser(res, user.email);
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
+      message: "メールアドレスにメールを送りました"
     });
   } else {
     res.status(400);

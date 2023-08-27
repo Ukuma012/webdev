@@ -1,11 +1,11 @@
 import transport from "./transport";
 import { Response } from "express";
 
-const sendmailRegisterUser = (res: Response) => {
+const sendmailRegisterUser = (res: Response, email: string) => {
 
   const mailData = {
     from: '"Example team" <from@example.com>',
-    to: "user1@example.com",
+    to: email,
     subject: "アカウント開設のお知らせ",
     text: "アカウント開設どうもありがとうございます。",
   };
