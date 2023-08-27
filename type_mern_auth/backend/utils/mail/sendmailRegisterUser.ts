@@ -1,22 +1,13 @@
-import nodemailer from "nodemailer";
+import transport from "./transport";
 import { Response } from "express";
 
-const sendMail = (res: Response) => {
-  const transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: process.env.MAILTRAP_USERNAME,
-      pass: process.env.MAILTRAP_PASS,
-    },
-  });
+const sendmailRegisterUser = (res: Response) => {
 
   const mailData = {
     from: '"Example team" <from@example.com>',
     to: "user1@example.com",
-    subject: "Nice Nodemailer test",
-    text: "This is a test mail",
-    html: "<b>Hey there! </b><br> This is our first message sent with Nodemailer",
+    subject: "アカウント開設のお知らせ",
+    text: "アカウント開設どうもありがとうございます。",
   };
 
   try {
@@ -36,4 +27,4 @@ const sendMail = (res: Response) => {
   }
 };
 
-export default sendMail;
+export default sendmailRegisterUser;
