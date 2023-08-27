@@ -10,21 +10,14 @@ const sendmailRegisterUser = (res: Response, email: string) => {
     text: "アカウント開設どうもありがとうございます。",
   };
 
-  try {
-    transport.sendMail(mailData, (error, info) => {
-      if (error) {
-        console.log("send failed");
-        console.log(error.message);
-        return;
-      }
+  transport.sendMail(mailData, (error, info) => {
+    if(error) {
+      res.status(400);
+      throw new Error("Email send failed");
+    }
 
-      console.log("send successful");
-      console.log(info.messageId);
-      res.status(200).json({ message: "send successful" });
-    });
-  } catch (e) {
-    console.log("error", e);
-  }
-};
+    console.log('Message sent: %s', info.messageId);
+  })
+}
 
 export default sendmailRegisterUser;
