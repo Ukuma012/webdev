@@ -16,21 +16,26 @@ app.use('/v1', route);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
-const transporter = nodemailer.createTransport({
-    port: 25,
-    host: localhost,
+const transport = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+        user: process.env.MAILTRAP_USERNAME,
+        pass: process.env.MAILTRAP_PASS
+    }
 });
 
 route.post('/test-mail', (req, res) => {
     const mailData = {
-        from: 'Fromアドレス',
-        to: 'Toアドレス',
-        subject: 'nodemailer test mail',
+        from: '"Example team" <from@example.com>',
+        to: 'user1@example.com',
+        subject: 'Nice Nodemailer test',
         text: 'This is a test mail',
+        html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
     };
 
     try {
-    transporter.sendMail(mailData, (error, info) => {
+    transport.sendMail(mailData, (error, info) => {
         if(error) {
             console.log("send failed");
             console.log(error.message);
