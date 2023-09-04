@@ -9,7 +9,7 @@ const connectDB = async () => {
             database: process.env.MYSQL_DB
         });
 
-        console.log('MySQL connected');
+        console.log(`MySQL connected: ${connection.threadId}`);
 
     } catch(error: any) {
         console.log(`Error: ${error.message}`);
