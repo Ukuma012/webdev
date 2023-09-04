@@ -1,18 +1,21 @@
-import mongoose, {mongo} from "mongoose";
+import mysql, { Connection } from 'mysql2/promise';
 
-const connectDB =async () => {
+const connectDB = async () => {
     try {
-        const con = await mongoose.connect(process.env.MONGO_URI);
-        console.log(`MongoDB connected: ${con.connection.host}`);
-    } catch (error) {
-        if(error instanceof Error) {
-            console.log(`Error: ${error.message}`);
-            process.exit(1);
-        } else {
-            console.log('Unexpected error', error);
-            process.exit(1);
-        }
+        const connection: Connection = await mysql.createConnection({
+            host: process.env.MYSQL_HOST,
+            user: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWORD,
+            database: process.env.MYSQL_DB
+        });
+
+        console.log('MySQL connected');
+
+    } catch(error: any) {
+        console.log(`Error: ${error.message}`);
+        process.exit(1);
     }
-}
+};
 
 export default connectDB;
+
